@@ -126,9 +126,6 @@ class CasePuncPredictor:
         self.model = Model(self.config.flavor, self.config.device)
         self.model.load_state_dict(loaded['model_state_dict'])
 
-        model_scripted = torch.jit.script(self.model)  # Export to TorchScript
-        model_scripted.save('model_scripted.pt')  # Save
-
         self.model.eval()
         self.model.to(self.config.device)
 
